@@ -1,11 +1,16 @@
 import type { App } from 'vue';
-import { HelloWorld, UITable } from './components';
+import { HelloWorldW, UITable, UKMTable } from './components';
 
 export default {
   install: (app: App) => {
-    app.component('HelloWorld', HelloWorld);
+    app.component('HelloWorldW', HelloWorldW);
     app.component('UITable', UITable);
+    app.component('UKMTable', UKMTable);
   }
 };
 
-export { HelloWorld, UITable };
+export { 
+  HelloWorldW, 
+  UITable, 
+  UKMTable 
+};

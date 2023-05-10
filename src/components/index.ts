@@ -1,2 +1,3 @@
-export { default as HelloWorld } from './HelloWorld/HelloWorld.vue';
+export { default as HelloWorldW } from './HelloWorldW/HelloWorldW.vue';
 export { default as UITable } from './UITable/UITable.vue';
+export { default as UKMTable } from './UKMTable/UKMTable.vue';
