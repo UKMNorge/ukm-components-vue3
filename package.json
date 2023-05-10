@@ -1,0 +1,50 @@
+{
+  "name": "ukm-components-vue",
+  "version": "0.0.5",
+  "description": "Vue Component Library Example",
+  "author": {
+    "name": "Kushtrim Aliu UKM",
+    "email": "kushtrim@ukm.no"
+  },
+  "homepage": "https://www.npmjs.com/package/ukm-components-vue",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UKMNorge/ukm-components-vue3"
+  },
+  "keywords": [
+    "vue",
+    "vue komponenter",
+    "UKM vue"
+  ],
+  "main": "./dist/ukm-components-vue.cjs.js",
+  "module": "./dist/ukm-components-vue.es.js",
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/ukm-components-vue.cjs.js",
+      "require": "./dist/ukm-components-vue.es.js"
+    }
+  },
+  "browser": {
+    ".": "./dist/ukm-components-vue.es.js"
+  },
+  "types": "./dist/ViewerPlugin.d.ts",
+  "scripts": {
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "test": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.14",
+    "@vitejs/plugin-vue": "^2.3.4",
+    "rollup-plugin-typescript2": "^0.33.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.15",
+    "vue-tsc": "^0.40.5"
+  }
+}
