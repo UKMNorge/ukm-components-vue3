@@ -66,6 +66,8 @@ $ npm i
 $ npm run build
 
 # Pakken genererer koden i `/dist` mappe
+
+# OBS: Husk å rydde node_modules etter at du er ferdig med utvikling
 ```
 
 ### Publiser pakken på NPM
