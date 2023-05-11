@@ -1,9 +1,9 @@
 {
   "name": "ukm-components-vue",
-  "version": "0.1.1",
-  "description": "Vue Component Library Example",
+  "version": "1.0.0",
+  "description": "Vue 3 komponenter brukt på UKM",
   "author": {
-    "name": "Kushtrim Aliu UKM",
+    "name": "Kushtrim Aliu - UKM",
     "email": "kushtrim@ukm.no"
   },
   "homepage": "https://www.npmjs.com/package/ukm-components-vue",
