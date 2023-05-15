@@ -1,12 +1,11 @@
 {
-  "name": "ukm-components-vue",
+  "name": "ukm-components-vue3",
   "version": "1.0.0",
   "description": "Vue 3 komponenter brukt på UKM",
   "author": {
     "name": "Kushtrim Aliu - UKM",
     "email": "kushtrim@ukm.no"
   },
-  "homepage": "https://www.npmjs.com/package/ukm-components-vue",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UKMNorge/ukm-components-vue3"
