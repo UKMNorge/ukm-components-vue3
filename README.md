@@ -70,6 +70,14 @@ $ npm run build
 # OBS: Husk å rydde node_modules etter at du er ferdig med utvikling
 ```
 
+# Legg til ny komponent
+
+
+1. Opprett mappe med navn "Komponentnavn" i `components`
+2. Opprett fil i mappe "Komponentnavn" med navn "Komponentnavn.vue"
+3. På src/components/index.ts legg til eksport koden `export { default as Komponentnavn } from './Komponentnavn/Komponentnavn.vue';`
+4. På src/ViewerPlugin.ts legg til Komponentnavn i import, legg til component i App og legg til Komponentnavn i export
+
 ### Publiser pakken på NPM
 
 1. Endre versjon i `package.json`
