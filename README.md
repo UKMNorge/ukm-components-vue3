@@ -57,7 +57,7 @@ $ rm -r ukm-components-vue3
 
 # Klon repoet fra GIT
 $ git clone https://github.com/UKMNorge/ukm-components-vue3.git
-# cd ukm-components-vue3
+$ cd ukm-components-vue3
 
 # Hent andre pakker
 $ npm i
