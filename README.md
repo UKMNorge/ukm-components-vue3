@@ -50,7 +50,7 @@ Bruk `npm link` for å lenke pakken mot node_modules. Les mer her: https://docs.
 
 ```bash
 # naviger til prosjektets node_modules
-$ cd UKMvideo/klient/node_modules
+$ cd UKMvideo/client/node_modules
 
 # slett pakken fra NPM
 $ rm -r ukm-components-vue3
