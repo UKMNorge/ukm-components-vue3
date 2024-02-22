@@ -93,3 +93,17 @@ $ npm publish
 ```
 
 HUSK å pushe koden til GIT etter publisering på NPM
+
+
+
+# All Components
+## Permanent Notification
+```vue
+<PermanentNotification :typeNotification="'warning'" :tittel="'Beskjed'" :description="'Beskrivelse'" />
+```
+
+![Screenshot 2024-02-22 at 15 35 25](https://github.com/UKMNorge/ukm-components-vue3/assets/10181004/8e5b9f8f-e2e5-41b2-a431-2a314af4fe13)
+
+
+
+
