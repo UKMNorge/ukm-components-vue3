@@ -37,6 +37,11 @@ import { UKMTable } from 'ukm-components-vue3';
 app.component('ukm-table', UKMTable);
 ```
 
+### Import css fra main.ts
+```js
+// Import CSS for ukm-components-vue3
+import "../node_modules/ukm-components-vue3/dist/style.css";
+```
 
 # Legg til/modifiser komponenter
 
