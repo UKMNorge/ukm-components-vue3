@@ -112,7 +112,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     
     .ukm-vue-table-row thead tr th .inner-div {
         display: flex;
