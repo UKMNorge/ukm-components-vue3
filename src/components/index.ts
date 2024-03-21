@@ -4,3 +4,6 @@ export { default as Input } from './Input/Input.vue';
 
 // Notifications
 export { default as PermanentNotification } from './Notifications/PermanentNotification.vue';
+
+// Inputs
+export { default as InputTextOverlay } from './Input/InputTextOverlay.vue';
