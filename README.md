@@ -97,6 +97,12 @@ HUSK å pushe koden til GIT etter publisering på NPM
 
 
 # All Components
+## Før importing av komponent
+Det er viktig å ha siste versjon av denne pakken, derfor må det kjøres npm update på pakken. Sjekk også versjon på `package.json`
+```
+npm update ukm-components-vue3
+```
+
 ## Permanent Notification
 ```vue
 <PermanentNotification :typeNotification="'warning'" :tittel="'Beskjed'" :description="'Beskrivelse'" />
