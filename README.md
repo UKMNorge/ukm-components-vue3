@@ -105,5 +105,11 @@ HUSK å pushe koden til GIT etter publisering på NPM
 ![Screenshot 2024-02-22 at 15 35 25](https://github.com/UKMNorge/ukm-components-vue3/assets/10181004/8e5b9f8f-e2e5-41b2-a431-2a314af4fe13)
 
 
+## Text Input with overlay
+```vue
+<InputTextOverlay :placeholder="'Søk etter kontakter'" :callbackChange="searchInputChanged" />
+```
+
+![image](https://github.com/UKMNorge/ukm-components-vue3/assets/10181004/cb38c6a0-bbdb-45a9-ae8e-c972d30fcc30)
 
 
