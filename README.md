@@ -119,3 +119,12 @@ npm update ukm-components-vue3
 ![image](https://github.com/UKMNorge/ukm-components-vue3/assets/10181004/cb38c6a0-bbdb-45a9-ae8e-c972d30fcc30)
 
 
+
+## Container with closing option
+```vue
+<FloatingClosable ref="floatingLeggTilMottaker">
+  <div>
+      <button @click="localMethod()">
+  </div>
+</FloatingClosable>
+```

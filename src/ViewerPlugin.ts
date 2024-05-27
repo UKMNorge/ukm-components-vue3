@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import { UITable, Table, Input, PermanentNotification, InputTextOverlay } from './components';
+import { UITable, Table, Input, PermanentNotification, InputTextOverlay, FloatingClosable } from './components';
 
 export default {
   install: (app: App) => {
@@ -8,6 +8,7 @@ export default {
     app.component('Input', Input);
     app.component('PermanentNotification', PermanentNotification);
     app.component('InputTextOverlay', InputTextOverlay);
+    app.component('FloatingClosable', FloatingClosable);
   }
 };
 
@@ -16,5 +17,6 @@ export {
   Table,
   Input,
   PermanentNotification,
-  InputTextOverlay
+  InputTextOverlay,
+  FloatingClosable,
 };

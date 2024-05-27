@@ -7,3 +7,6 @@ export { default as PermanentNotification } from './Notifications/PermanentNotif
 
 // Inputs
 export { default as InputTextOverlay } from './Input/InputTextOverlay.vue';
+
+// Containers
+export { default as FloatingClosable } from './Container/FloatingClosable.vue';
