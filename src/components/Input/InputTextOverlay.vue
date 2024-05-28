@@ -1,55 +1,75 @@
 <template>
-    <div class="input-delta" :class="{ open: isOpen || inputText.length > 0 }">
+    <div class="input-delta" :class="{ open: isOpen || inputValue.length > 0 }">
         <div class="overlay as-padding-space-1" @click="clickOpen">
             <div class="info">
                 <!-- <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: #A0AEC0;transform: ;msFilter:;"><path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"></path></svg> -->
                 <span class="text as-margin-left-space-1">{{ placeholder }}</span>
             </div>
         </div>
-        <input ref="inputRef" @click="clickInput" @blur="saveChangesCallback" @input="handleInputChange" type="text" v-model="inputText" class="input as-padding-left-space-1" name="koreografi_av">
+          <!-- <input  :value="inputValue" @input="onInputChange" /> -->
+        <input ref="inputRef" @click="clickInput" @blur="saveChangesCallback" @input="onInputChange" :type="type" :value="inputValue" class="input as-padding-left-space-1" :name="name">
     </div> 
 </template>
+
+
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { PropType } from 'vue';
 
-
 export default defineComponent({
     props: {
         callbackChange: {
-            type: Function as PropType<(inputText: string) => void>,
-            default: () => {}
+            type: Function as PropType<(input: string) => void>,
+            default: () => {},
+            required: false
         },
         placeholder: {
             type: String,
             required: true
+        },
+        name: {
+            type: String,
+            required: false
+        },
+        modelValue: {
+            type: String as PropType<string>,
+            required: true
+        },
+        type: {
+            type: String,
+            required: false,
+            default: 'text'
         }
+    },
+    emits: ['update:modelValue'],
+    watch: {
+      modelValue(newValue) {
+        this.inputValue = newValue;
+      }
     },
     data() {
         return {
             isOpen: false as boolean,
-            inputText: '' as string,
+            inputValue: this.modelValue
         }
     },
     methods: {
-        handleInputChange() {
-            this.callbackChange(this.inputText);
-        },
-
         clickOpen() {
             (this.$refs.inputRef as HTMLInputElement).focus();
             this.isOpen = true;
         },
-
         clickInput() {
             this.isOpen = true;
         },
-
         saveChangesCallback() {
             this.isOpen = false;
             console.log('saveChangesCallback');
         },
+        onInputChange(event: Event) {
+            const target = event.target as HTMLInputElement;
+            this.$emit('update:modelValue', target.value);
+        }
     }
 });
 </script>
