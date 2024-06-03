@@ -1,5 +1,5 @@
 <template>
-    <v-snackbar v-model="snackbar" :timeout="timeout" :top="true" :color="getTypeColor()">
+    <v-snackbar v-model="snackbar" :timeout="timeout" :top="true" :color="getTypeColor()" class="msg-snackbar-main-div">
         <h4 class="mr-2 msg-snackbar-color">{{ title }}</h4>
         <span class="msg-snackbar-color">{{ message }}</span>
 
@@ -22,6 +22,7 @@ export default defineComponent({
     data() {
         return {
             snackbar: false,
+            boxRadius : '15px',
             title : '',
             message: '',
             timeout: 1000*3000, // Duration the snackbar will be visible (in milliseconds)
@@ -57,6 +58,12 @@ export default defineComponent({
     },
 });
 </script>
+
+<style>
+.msg-snackbar-main-div .v-overlay__content {
+    border-radius: var(--radius-high);
+}
+</style>
 
 <style scoped>
 .msg-snackbar-color {
