@@ -25,7 +25,7 @@ export default defineComponent({
             boxRadius : '15px',
             title : '',
             message: '',
-            timeout: 1000*3000, // Duration the snackbar will be visible (in milliseconds)
+            timeout: 4000, // Duration the snackbar will be visible (in milliseconds)
             type : 'primary' as 'primary' | 'success' | 'error' | 'warning' | 'info',
 
         };
