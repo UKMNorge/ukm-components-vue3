@@ -136,27 +136,31 @@ export default class SPAInteraction {
                     return;
                 }
 
-                var errorMessage = res.responseText ? JSON.parse(res.responseText).result : res.statusText;
-
-                if (res.statusCode().status === 500) {
-                    if (errorMessage) {
-                        this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', errorMessage, 'error');
+                try {
+                    var errorMessage = res.responseText ? JSON.parse(res.responseText).result : res.statusText;
+    
+                    if (res.statusCode().status === 500) {
+                        if (errorMessage) {
+                            this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', errorMessage, 'error');
+                            messageShown = true;
+                        }
+                    } else if (res.statusCode().status === 400) {
+                        if(errorMessage) {
+                            this.interactionObjekt.showMessage('Det er noe som mangler!', errorMessage, 'error');
+                            messageShown = true;
+                        }
+    
+                        this.interactionObjekt.showMessage('Det er noe som mangler!', 'Vennligst fyll inn all informasjon eller kontakt support hvis feilen vedvarer', 'warning');
                         messageShown = true;
                     }
-                } else if (res.statusCode().status === 400) {
-                    if(errorMessage) {
-                        this.interactionObjekt.showMessage('Det er noe som mangler!', errorMessage, 'error');
-                        messageShown = true;
+    
+                    if(!messageShown) {
+                        this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', 'Det har oppstått en feil, kontakt support hvis feilen vedvarer', 'error');
                     }
-
-                    this.interactionObjekt.showMessage('Det er noe som mangler!', 'Vennligst fyll inn all informasjon eller kontakt support hvis feilen vedvarer', 'warning');
-                    messageShown = true;
+                    reject(res);
+                } catch (e) {
+                    this.interactionObjekt.showMessage('Det har oppstått en feil i systemet', 'Vennligst prøv igjen senere eller kontakt support@ukm.no', 'error');
                 }
-
-                if(!messageShown) {
-                    this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', 'Det har oppstått en feil, kontakt support hvis feilen vedvarer', 'error');
-                }
-                reject(res);
             });
         });
     }
