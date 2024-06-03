@@ -129,24 +129,31 @@ export default class SPAInteraction {
             }).fail((res: any) => {
                 // The call has returned an error, remove the spinner
                 $(button).find('.spinner-border').detach();
+                this.interactionObjekt.hideLoading();
+
+                if(silent) {
+                    reject(res);
+                    return;
+                }
+
+                var errorMessage = res.responseText ? JSON.parse(res.responseText).result : res.statusText;
 
                 if (res.statusCode().status === 500) {
-                    if (res.responseJSON && res.responseJSON.errorMessage) {
-                        this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', res.responseJSON.errorMessage, 'error');
+                    if (errorMessage) {
+                        this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', errorMessage, 'error');
                         messageShown = true;
                     }
                 } else if (res.statusCode().status === 400) {
-                    if(res.responseJSON && res.responseJSON.errorMessage) {
-                        this.interactionObjekt.showMessage('Det er noe som mangler!', res.responseJSON.errorMessage, 'error');
-                        messageShown = true;
-                    } else if(!silent) {
-                        this.interactionObjekt.showMessage('Det er noe som mangler!', 'Vennligst fyll ut all informasjon eller kontakt support hvis feilen vedvarer', 'warning');
+                    if(errorMessage) {
+                        this.interactionObjekt.showMessage('Det er noe som mangler!', errorMessage, 'error');
                         messageShown = true;
                     }
+
+                    this.interactionObjekt.showMessage('Det er noe som mangler!', 'Vennligst fyll inn all informasjon eller kontakt support hvis feilen vedvarer', 'warning');
+                    messageShown = true;
                 }
 
-                this.interactionObjekt.hideLoading();
-                if(!silent && !messageShown) {
+                if(!messageShown) {
                     this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', 'Det har oppstått en feil, kontakt support hvis feilen vedvarer', 'error');
                 }
                 reject(res);
