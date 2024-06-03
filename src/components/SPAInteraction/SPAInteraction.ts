@@ -94,8 +94,9 @@ export default class SPAInteraction {
     }
 
     // Server communication
-    async runAjaxCall(url: string, method: string, data: any, event: any = null): Promise<any> {
+    async runAjaxCall(url: string, method: string, data: any, silent : boolean = false, event: any = null): Promise<any> {
         let getData: any[] = [];
+        let messageShown: boolean = false;
 
         if (method === 'GET' && Object.keys(data).length > 0) {
             for (let key in data) {
@@ -130,15 +131,24 @@ export default class SPAInteraction {
                 $(button).find('.spinner-border').detach();
 
                 if (res.statusCode().status === 500) {
-                    if (res.responseJSON.errorMessage) {
+                    if (res.responseJSON && res.responseJSON.errorMessage) {
                         this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', res.responseJSON.errorMessage, 'error');
+                        messageShown = true;
                     }
                 } else if (res.statusCode().status === 400) {
-                    this.interactionObjekt.showMessage('Det er noe som mangler!', res.responseJSON.errorMessage, 'error');
+                    if(res.responseJSON && res.responseJSON.errorMessage) {
+                        this.interactionObjekt.showMessage('Det er noe som mangler!', res.responseJSON.errorMessage, 'error');
+                        messageShown = true;
+                    } else if(!silent) {
+                        this.interactionObjekt.showMessage('Det er noe som mangler!', 'Vennligst fyll ut all informasjon eller kontakt support hvis feilen vedvarer', 'warning');
+                        messageShown = true;
+                    }
                 }
 
                 this.interactionObjekt.hideLoading();
-
+                if(!silent && !messageShown) {
+                    this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', 'Det har oppstått en feil, kontakt support hvis feilen vedvarer', 'error');
+                }
                 reject(res);
             });
         });
