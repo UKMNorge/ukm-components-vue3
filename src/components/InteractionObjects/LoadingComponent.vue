@@ -1,6 +1,6 @@
 <template>
     <div class="loading">
-        <div v-show="show" id="headerMainLoader">
+        <div v-if="show" id="headerMainLoader">
             <v-progress-circular indeterminate :size="91" :width="9"></v-progress-circular>
         </div>
     </div>
@@ -18,11 +18,9 @@ export default defineComponent({
     },
     methods : {
         showLoading : function() {
-            console.log('show2126');
             this.show = true;
         },
         hideLoading : function() {
-            console.log('hide2126');
             this.show = false;
         }
     },

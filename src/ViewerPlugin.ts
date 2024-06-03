@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import { UITable, Table, Input, PermanentNotification, InputTextOverlay, FloatingClosable } from './components';
+import { UITable, Table, Input, PermanentNotification, InputTextOverlay, FloatingClosable, InteractionObject, SPAInteraction } from './components';
 
 export default {
   install: (app: App) => {
@@ -9,6 +9,7 @@ export default {
     app.component('PermanentNotification', PermanentNotification);
     app.component('InputTextOverlay', InputTextOverlay);
     app.component('FloatingClosable', FloatingClosable);
+    app.component('InteractionObject', InteractionObject);
   }
 };
 
@@ -19,4 +20,6 @@ export {
   PermanentNotification,
   InputTextOverlay,
   FloatingClosable,
+  InteractionObject,
+  SPAInteraction,
 };

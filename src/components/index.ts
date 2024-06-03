@@ -10,3 +10,8 @@ export { default as InputTextOverlay } from './Input/InputTextOverlay.vue';
 
 // Containers
 export { default as FloatingClosable } from './Container/FloatingClosable.vue';
+
+// Interaction object
+export { default as InteractionObject } from './InteractionObjects/InteractionObject.vue';
+
+export { default as SPAInteraction } from './SPAInteraction/SPAInteraction';
