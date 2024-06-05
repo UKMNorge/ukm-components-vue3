@@ -137,13 +137,31 @@ export default class SPAInteraction {
                 }
 
                 try {
-                    var errorMessage = res.responseText ? JSON.parse(res.responseText).result : res.statusText;
-    
+                    var errorMessage = null;
+
+                    if(res.result) {
+                        errorMessage = res.result;
+                    }
+                    else {
+                        errorMessage = res.responseText ? JSON.parse(res.responseText).result : res.statusText;
+                    }
+                    
                     if (res.statusCode().status === 500) {
                         if (errorMessage) {
                             this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', errorMessage, 'error');
                             messageShown = true;
                         }
+                    } else if (res.statusCode().status === 401) {
+                        this.interactionObjekt.showMessage('Du har ikke tilgang!', 'Du har ikke tilgang til denne funksjonen', 'error');
+                        messageShown = true;
+                    }
+                    else if (res.statusCode().status === 403) {
+                        this.interactionObjekt.showMessage('Du har ikke tilgang!', 'Du har ikke tilgang til denne funksjonen', 'error');
+                        messageShown = true;
+                    }
+                    else if (res.statusCode().status === 501) {
+                        this.interactionObjekt.showMessage('Prosessen kan ikke utføres!', 'Denne funksjonen er ikke implementert', 'error');
+                        messageShown = true;
                     } else if (res.statusCode().status === 400) {
                         if(errorMessage) {
                             this.interactionObjekt.showMessage('Det er noe som mangler!', errorMessage, 'error');
@@ -160,6 +178,7 @@ export default class SPAInteraction {
                     reject(res);
                 } catch (e) {
                     this.interactionObjekt.showMessage('Det har oppstått en feil i systemet', 'Vennligst prøv igjen senere eller kontakt support@ukm.no', 'error');
+                    reject(res);
                 }
             });
         });
