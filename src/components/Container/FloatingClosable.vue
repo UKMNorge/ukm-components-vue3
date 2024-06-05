@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="isOpen" @click="closeEvent($event)" class="node-floating-selector close-selector">
-        <div class="box selector as-card-1 as-padding-space-5">
+    <div v-if="isOpen" @click="closeEvent($event)" class="node-floating-selector as-padding-space-2 close-selector">
+        <div class="box selector as-card-1 as-padding-space-5 as-xs-padding-space-3">
                 <button class="close-selector close-btn as-btn-hover-default">
                     <div class="icon close-selector">
                         <svg class="remove-icon close-selector" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +57,6 @@ export default defineComponent ({
     height: 100%;
     width: 100%;
     display: flex;
-    
 }
 .node-floating-selector .box {
     margin: auto;
@@ -76,6 +75,7 @@ export default defineComponent ({
     width: 35px;
     display: flex;
     background: transparent;
+    z-index: 9;
 }
 .node-floating-selector .box button.close-btn:hover {
     background: var(--color-primary-grey-light) !important;
@@ -88,6 +88,13 @@ export default defineComponent ({
 }
 .node-floating-selector .box button.close-btn .icon svg {
     display: flex;
+}
+@media(max-width: 576px) {
+  .node-floating-selector .box {
+      max-width: 100%;
+      width: 100%;
+      min-width: auto;
+  }
 }
 </style>
   
