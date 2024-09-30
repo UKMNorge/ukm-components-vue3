@@ -5,23 +5,22 @@
 
             <!-- Answers -->
             <div  class="as-display-flex-wrap as-margin-top-space-3">
-                <div class="as-margin-auto">
+                <div class="as-margin-auto" style="display: flex">
                     <template v-for="answer in answers">
-                        <v-btn v-if="answer.text.length > 0"
-                            class="v-btn-as-shadow answer-button as-margin-left-space-1 as-margin-right-space-1 as-margin-top-space-1"
-                            rounded="large"
-                            :append-icon="answer.iconClass"
-                            @click="sendAnswer(answer)"
-                            :size="isMobile ? 'small' : 'large'">
-                            {{ answer.text }}
-                        </v-btn>
-                        <v-btn v-else
-                            class="as-margin-right-space-1 answer-button as-margin-left-space-1 as-margin-top-space-1"
-                            :size="isMobile ? 'small' : 'default'"
-                            @click="sendAnswer(answer)"
-                            icon>
-                            <v-icon :size="isMobile ? 27 : 30">{{ answer.iconClass }}</v-icon>
-                        </v-btn>
+                        <div>
+                            <v-btn
+                                class="as-margin-right-space-1 answer-button as-margin-left-space-1 as-margin-top-space-1"
+                                :size="isMobile ? 'small' : 'default'"
+                                @click="sendAnswer(answer)"
+                                icon>
+                                <v-icon :size="isMobile ? 27 : 30">{{ answer.iconClass }}</v-icon>
+                            </v-btn>
+                            <div class="text-item-feedback" v-if="answer.text.length > 0">
+                                <span class="text-item">
+                                    {{ answer.text }}
+                                </span>
+                            </div>
+                        </div>
 
                     </template>
                 </div>
@@ -75,6 +74,14 @@ export default defineComponent({
 
 
 <style scoped>
+.text-item-feedback {
+    display: flex;
+}
+.text-item-feedback .text-item {
+    margin: auto;
+    margin-top: calc(8px*1.5); /* Based on 8px initial-space-box  */
+}
+
 @media (max-width: 576px) {
     .answer-button {
         margin: auto;
