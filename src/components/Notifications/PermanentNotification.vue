@@ -1,8 +1,9 @@
 <template>
     <div>
-        <div :class="[typeNotification + '-type']" class="vue-componment-notification-message nosh-impt as-card-2 as-padding-space-2">
+        <div :class="[typeNotification + '-type']" class="vue-componment-notification-message nosh-impt as-card-2 as-padding-space-2 as-margin-bottom-space-2 as-margin-top-space-2">
             <h5 class="title as-padding-bottom-space-1">{{ tittel }}</h5>
-            <span class="description nop">{{ description }}</span>
+            <div v-if="isHTML" class="description nop" v-html="description"></div>
+            <span v-else class="description nop">{{ description }}</span>
         </div>
     </div>
 </template>
@@ -31,6 +32,10 @@ export default defineComponent({
                 }
                 return true;
             }
+        },
+        isHTML: {
+            type: Boolean,
+            default: false
         }
     },
 });
